@@ -35,11 +35,10 @@ export default function Home() {
     const provider = await web3ModalRef.current.connect();
     const web3Provider = new providers.Web3Provider(provider);
 
-    // If user is not connected to the Goerli network, let them know and throw an error
     const { chainId } = await web3Provider.getNetwork();
-    if (chainId !== 5) {
-      window.alert("Change the network to Goerli");
-      throw new Error("Change network to Goerli");
+    if (chainId !== 11155111) {
+      window.alert("Change the network to Sepolia");
+      throw new Error("Change network to Sepolia");
     }
 
     if (needSigner) {
@@ -204,6 +203,7 @@ export default function Home() {
             {/* Using HTML Entities for the apostrophe */}
             It&#39;s an NFT collection for people who like to be put on lists.
           </div>
+          <div className={styles.description}>Only on Sepolia.</div>
           <div className={styles.description}>
             {numberOfWhitelisted} have already joined the Whitelist
           </div>
